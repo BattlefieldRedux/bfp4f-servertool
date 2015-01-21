@@ -150,16 +150,16 @@ $lang = array(
 	'tool_server_unranked' => 'UNRANKED', // NOTE: All uppercase!
 	'tool_server_joining' => 'joining', // NOTE: All lowercase
 	'tool_server_curmap' => 'Current map',
-	'tool_server_t1tickets' => 'Team 1 tickets',
-	'tool_server_t2tickets' => 'Team 2 tickets',
+	'tool_server_t1tickets' => 'National kills',
+	'tool_server_t2tickets' => 'Royal kills',
 	'tool_server_playing' => 'Time playing',
 	'tool_server_serverip' => 'Server IP',
 	'tool_server_rconport' => 'RCON admin port',
 	'tool_server_rconpass' => 'RCON password',
 	'tool_server_chat' => 'Chat',
 	'tool_server_adminchat' => 'Adminchat',
-	'tool_server_team' => 'Team',
-	'tool_server_kit' => 'Kit',
+	'tool_server_team' => 'National',
+	'tool_server_kit' => 'Class',
 	'tool_server_ping' => 'Ping',
 	'tool_server_kills' => 'Kills',
 	'tool_server_deaths' => 'Deaths',
@@ -174,7 +174,7 @@ $lang = array(
 	'tool_server_send_msg' => 'Send message',
 	'tool_server_send_msg_help1' => 'This message will appear in the adminchat!',
 	'tool_server_msg_sent' => 'Servermessage is sent',
-	'tool_server_loadout' => 'Get loadout',
+	'tool_server_loadout' => 'Ban player',
 	'tool_server_loadout_title' => 'Loadout of', // Loadout of {name}
 	
 	// Server settings
@@ -325,13 +325,13 @@ $lang = array(
 	'tool_al' => 'Attachment limiter',
 	'tool_al_desc' => 'Pick the disallowed attachments and automatically kick the players',
 	
-	'tool_sl' => 'Shotgun limiter',
-	'tool_sl_desc' => 'Set a maximum amount of shotgun users per team',
+	'tool_sl' => 'Kills limiter',
+	'tool_sl_desc' => 'Set a maximum kills allowed per round',
 	'tool_sl_max' => 'Maximum',
-	'tool_sl_help1' => 'Maximum shotgun users per team',
+	'tool_sl_help1' => 'Maximum kills for one round',
 	'tool_sl_err1' => 'Unknown status value for the tool',
 	'tool_sl_err2' => 'Unknown ignvip value for the tool',
-	'tool_sl_err3' => 'Invalid number for maximum shotgun users',
+	'tool_sl_err3' => 'Invalid number for maximum maximum',
 	
 	'tool_ll' => 'Level limiter',
 	'tool_ll_desc' => 'Set a minimum and maximum required level',
@@ -344,10 +344,9 @@ $lang = array(
 	
 	'tool_cl' => 'Class limiter',
 	'tool_cl_desc' => 'Allow a certain amount of classes per team',
-	'tool_cl_assaults' => 'Assaults',
-	'tool_cl_medics' => 'Medics',
-	'tool_cl_recons' => 'Recons',
-	'tool_cl_engineers' => 'Engineers',
+	'tool_cl_gunners' => 'Gunners',
+	'tool_cl_soldiers' => 'Soldiers',
+	'tool_cl_commandos' => 'Commandos',
 	'tool_cl_err1' => 'Unknown status value for the tool',
 	'tool_cl_err2' => 'Unknown ignvip value for the tool',
 	'tool_cl_err3' => 'Invalid number for %class%',
@@ -408,7 +407,7 @@ $lang = array(
 	'tool_ping_desc' => 'Check the connection status',
 	'tool_ping_info1' => 'The ping between the servertool and your gameserver is:',
 	'tool_ping_info2' => 'Between the servertool and gameserver',
-	'tool_ping_info3' => 'The ping between the servertool and the BFP4F website is:',
+	'tool_ping_info3' => 'The ping between the servertool and the BFH website is:',
 	'tool_ping_status1' => 'The connection is exellent!',
 	'tool_ping_status2' => 'The connection is average',
 	'tool_ping_status3' => 'The connection is slow!',
@@ -468,7 +467,8 @@ $lang = array(
 	'cp_itemlist_err1' => 'No items were found',
 	
 	// ControlPanel footer
-	'cp_footer_thread' => 'Tool thread',
+	'cp_footer_thread' => 'BFH-CBL.org',
+	'cp_footer_thread2' => 'Official Thread',
 	
 	/*
 	* Q&A THINGS

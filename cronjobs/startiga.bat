@@ -1,0 +1,1 @@
+C:\xamp2\php\php.exe C:\xamp2\htdocs\cronjobs\igcmds.php

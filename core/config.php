@@ -24,7 +24,7 @@
 // CHANGE THIS!
 
 // Your home URL, end with a backslash
-define('HOME_URL', 'http://YOUR_URL_HERE/');
+define('HOME_URL', 'http://localhost/');
 
 // A random string, please change this to your own random string!
 // Do NOT change this after the installation
@@ -40,11 +40,11 @@ $config = array(
 	// Database host, usually localhost
 	'db_host' => 'localhost',
 	// Database username
-	'db_username' => 'XXX',
+	'db_username' => 'control',
 	// Database password
-	'db_password' => 'XXX',
+	'db_password' => 'asd123asd',
 	// Database name
-	'db_name' => 'XXX',
+	'db_name' => 'control',
 	// Database table prefix (optional)
 	'db_prefix' => '',
 	

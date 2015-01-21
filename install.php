@@ -37,10 +37,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['server_ip']) && isset($
 	if(!@fsockopen($_POST['server_ip'], $_POST['server_port'], $cn, $cs, 3)) {
 		$errors[] = 'Could not connect to the server, please try again and check your serverinformation';
 	}
-	$data = @json_decode(@file_get_contents("http://battlefield.play4free.com/en/profile/soldiers/" . $_POST['profile_id']), true);
-	if(count($data['data']) == 0) {
-		$errors[] = 'Invalid ProfileID';
-	}
 	if(strlen($_POST['name']) < 5) {
 		$errors[] = 'Name has to be at least 5 characters';
 	}

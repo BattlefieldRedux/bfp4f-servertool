@@ -181,7 +181,7 @@ if($user->checkLogin()) {
 				if($userInfo['rights_server'] == 'yes') {
 					if($rc->connect($cn, $cs) && $rc->init()) {
 						$ct->send('|ccc| Skipping to next map...');
-						$sv->runNextMap();
+						$sv->skipToNextMap();
 						$response['status'] = 'OK';
 						$response['msg'] = $lang['tool_server_nextmap_msg'];
 						$log->insertActionLog($userInfo['user_id'], 'Map skipped (next)');
@@ -584,7 +584,7 @@ if($user->checkLogin()) {
 					if($userInfo['rights_server'] == 'yes') {
 						if($rc->connect($cn, $cs) && $rc->init()) {
 							$map = explode($_POST['map'], '|');
-							$sv->changeMap($map[0], $map[1]);
+							$sv->changeMap($map);
 							
 							$response['status'] = 'OK';
 							$response['msg'] = $lang['tool_server_switchmap_msg'];

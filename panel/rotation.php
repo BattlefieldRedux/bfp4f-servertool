@@ -104,13 +104,12 @@ $mapsArray = explode("\n", $rc->query("maplist"));
 $curRot = array( );
 
 foreach($mapsArray as $map) {
-	preg_match('/([0-9]+)(: )(")([a-zA-Z_]+)(")( )([a-zA-Z_-]+)( )([0-9]+)/', $map, $matches);
+	preg_match('/([0-9]+)\: "(.*?)" (.*?)\Z/i', $map, $matches);
 	
 	$curRot[] = array(
-		'index' => $matches[0],
-		'name' => $matches[4],
-		'gamemode' => $matches[7],
-		'players' => $matches[9],
+		'index' => $matches[1],
+		'name' => $matches[2],
+		'gamemode' => $matches[3],
 	);
 	
 }
@@ -133,7 +132,7 @@ foreach($mapsArray as $map) {
 				$('#currentRotation').sortable();
 			});
 			
-			function appendRotation(map, gamemode, mapAlt, gamemodeAlt) {
+			function appendRotationfunction appendRotation(map, gamemode, mapAlt, gamemodeAlt) {
 				
 				$('#currentRotation').append('<tr><input type="hidden" name="rotation[]" value="' + mapAlt + '|' + gamemodeAlt + '" /><td>' + map + '</td><td>' + gamemode + '</td><td class="center"><a href="javascript:;" onclick="$(this).parent().parent().remove()" class="btn btn-danger btn-xs"><i class="fa fa-times icon-only"></i></a></td></tr>')
 				

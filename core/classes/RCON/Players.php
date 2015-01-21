@@ -194,7 +194,7 @@ class Players
      *
      * @return void
      */
-    public function ban($playerId, $time, $reason=null)
+	public function ban($playerId, $time, $reason=null)
     {
         Base::query("ban {$playerId} {$time} \"{$reason}\"");
     }

@@ -48,7 +48,7 @@
 						<img src="panel/img/battlefieldtools-logo.png" alt="BattlefieldTools.com" class="f1" />
 					</div>
 					<h2 class="center f3">
-						BATTLEFIELDTOOLS SERVERTOOL v0.7.2<br />
+						WebCon for BFH v0.1<br />
 						<small>GPL v3.0. LICENSE</small>
 					</h2>
 					<hr />
@@ -67,11 +67,9 @@ if(!function_exists('mcrypt_encrypt') || !function_exists('mcrypt_create_iv') ||
 }
 ?>
 					
-						<p>Thank you for using my free servertool. I've put a lot of time and effort in this project, but of course it's not perfect and there are always things that can be improved / added. Please post all the bugs and your own suggestions in <a href="http://battlefield.play4free.com/en/forum/showthread.php?tid=137006" target="_blank">the forum thread</a>.<br /><br />Help me with this tool by reporting bugs, posting suggestions and by donating!</p>
+						<p>Thank you for using my free servertool. I've put a lot of time and effort in this project, but of course it's not perfect and there are always things that can be improved / added. Please post all the bugs and your own suggestions in <a href="http://battlefield.play4free.com/en/forum/showthread.php?tid=137006" target="_blank">the forum thread</a>.</p>
 						
-						<p><b>Current version:</b> v0.7.2</p>
-						
-						<p class="center"><a href="http://battlefieldtools.com/donate" target="_blank"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate" /></a></p>
+						<p><b>Current version:</b> v0.1</p>
 						
 						<hr />
 						
@@ -81,61 +79,13 @@ if(!function_exists('mcrypt_encrypt') || !function_exists('mcrypt_create_iv') ||
 							</div>
 						</div>
 						
-						<hr />
-						
-						<h2 class="center red" id="credits"><i class="fa fa-heart"></i> CREDITS <i class="fa fa-heart"></i></h2>
-						
-						<br />
-						
-						<p>Some guys who have helped me and I'd love to thank:</p>
-						
-						<br />
-						
-						<div class="row">
-							<div class="col-md-4">
-								<h3 class="center">Developers</h3>
-								<ul class="fa-ul">
-									<li><i class="fa-li fa fa-user"></i>Danny Li &lt;SharpBunny&gt;<br />bunny@battlefieldtools.com</li>
-									
-									<li><i class="fa-li fa fa-group"></i>BattlefieldTools.com Staff</li>
-								</ul>
-							</div>
-							<div class="col-md-4">
-								<h3 class="center">Translations</h3>
-								<br />
-								<h4 class="center"><a href="https://github.com/dyhli/bfp4f-servertool-langs/tree/master/v0.7.2" target="_blank">Other languages</a></h4>
-							</div>
-							<div class="col-md-4">
-								<h3 class="center">Suggestions</h3>
-								<br />
-								<h4 class="center"><a href="https://battlefieldtools.com/forum/topic/68" target="_blank">Read and post suggestions</a></h4>
-							</div>
-						</div>
-						
-						<br />
-						
-						<h3 class="text-muted">Thanks to...</h3>
-						<ul class="fa-ul">
-							<li><i class="fa-li fa fa-group"></i>BFP4F community, <i>for everything you guys have done</i></li>
-							<li><i class="fa-li fa fa-group"></i>UGC, <i>for the awesome support and fun I had and still have</i></li>
-							<li><i class="fa-li fa fa-user"></i>piqus.pl, <i>for the support and RCON class!</i></li>
-							<br />
-							<li><i class="fa-li fa fa-gift red"></i>All the people who have donated</li>
-							<br />
-							<li><i class="fa-li fa fa-coffee brown"></i>A lot of coffee... <small><i>and food... I LOVE FOOD! NOM NOM NOM!</i></small></li>
-						</ul>
-						
-						<br />
-						
-						<h2 class="center">Thank you very much and enjoy!</h2>
-					</div>
-				</div>
-			</div>
+					
+
 			
 			<footer class="row">
 				<div class="col-md-12">
 					<hr />		
-					<p class="text-muted"><a href="http://battlefieldtools.com" target="_blank"><i class="fa fa-wrench"></i> BattlefieldTools.com</a> &middot; <a href="http://battlefield.play4free.com/en/forum/showthread.php?tid=137006" target="_blank"><i class="fa fa-file-text"></i> Tool thread</a> &middot; <a href="https://github.com/dyhli/bfp4f-servertool/" target="_blank"><i class="fa fa-github"></i> View on GitHub</a> <span class="pull-right">BattlefieldTools Servertool is licensed under GPL v3.0.<br />Copyright &copy; <?=date('Y')?> by Danny Li <SharpBunny></span></p>
+					<p class="text-muted"><a href="http://battlefieldtools.com" target="_blank"><i class="fa fa-wrench"></i> Official Thread</a> &middot; <a href="http://www.bfh-cbl.org" target="_blank"><i class="fa fa-file-text"></i> BFH-CBL.org</a> <span class="pull-right">Modified by toolchain</span> </p>
 				</div>
 			</footer>
 			

@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username']) && isset($_
 			<div class="row" style="margin:40px 0">
 				<div class="col-md-6 col-md-offset-3">
 					
-					<h1 class="center"><i class="fa fa-wrench"></i> Battlefield Play4free Servertool</h1>
+					<h1 class="center"><i class="fa fa-wrench"></i> WebCon Servertool</h1>
 					<hr />
 					
 					<?=$status?>
@@ -91,9 +91,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username']) && isset($_
 						<br />
 						
 						<div class="form-group">
-							<div class="col-sm-4">
-								<a class="btn btn-block btn-default" href="<?=HOME_URL?>"><i class="fa fa-heart"></i> <?=$lang['cp_menu_credits']?></a>
-							</div>
 							<div class="col-sm-4 col-sm-offset-4">
 								<button type="submit" class="btn btn-block btn-primary"><?=$lang['word_go']?> <i class="fa fa-arrow-right fa-right"></i></button>
 							</div>

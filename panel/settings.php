@@ -35,7 +35,7 @@ include(CORE_DIR . '/cp_header.php');
 $status = '';
 
 // If form is posted
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['lang']) && isset($_POST['df']) && isset($_POST['df_full']) && isset($_POST['notifier']) && isset($_POST['notify_email']) && isset($_POST['limiters']) && isset($_POST['igcmds']) && isset($_POST['tmsgs']) && isset($_POST['public_watcher']) && isset($_POST['minusone']) && isset($_POST['iga_ad']) && isset($_POST['i3d_userid']) && isset($_POST['i3d_apikey']) && isset($_POST['i3d_gameserverid'])) {
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['lang']) && isset($_POST['df']) && isset($_POST['df_full']) && isset($_POST['notifier']) && isset($_POST['notify_email']) && isset($_POST['limiters']) && isset($_POST['igcmds']) && isset($_POST['tmsgs']) && isset($_POST['public_watcher']) && isset($_POST['minusone'])) {
 	
 	sleep(2);
 	
@@ -82,28 +82,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['lang']) && isset($_POST
 	if($_POST['minusone'] != 'false') {
 		$_POST['minusone'] = 'true';
 	}
-	// Check iga_ad
-	if(!in_array($_POST['iga_ad'], array(0, 30, 60, 90, 120, 180, 240, 300))) {
-		$errors[] = $lang['tool_set_err2'];
-	}
-	// Check i3D API
-	if(!empty($_POST['i3d_userid']) || !empty($_POST['i3d_apikey']) || !empty($_POST['i3d_gameserverid'])) {
-		$i3d = new Extern\I3D\API;
-		$i3d->userId = $_POST['i3d_userid'];
-		$i3d->apiKey = $_POST['i3d_apikey'];
-		$i3d->category = 'gameserver';
-		$i3d->action = 'getServerById';
-		$i3dResult = (array) $i3d->doRequest(array( 
-			'gameserverId' => $_POST['i3d_gameserverid'],
-		));
-		
-		if($i3dResult['status'] == 'Error') {
-			$errors[] = 'i3D API: ' . $i3dResult['message'];
-		} elseif(count($i3dResult['data']) == 0) {
-			$errors[] = $lang['i3d_err1'];
-		} else {
-			$i3dValid = true;
-		}
 	}
 	
 	// Check errors and stuff
@@ -118,19 +96,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['lang']) && isset($_POST
 			updateSetting('tool_igcmds', $_POST['igcmds']) &&
 			updateSetting('tool_tmsg', $_POST['tmsgs']) &&
 			updateSetting('tool_watcher', $_POST['public_watcher']) &&
-			updateSetting('tool_minusone', $_POST['minusone']) &&
-			updateSetting('iga_ad', $_POST['iga_ad']) &&
-			updateSetting('i3d_userid', encrypt($_POST['i3d_userid'])) &&
-			updateSetting('i3d_apikey', encrypt($_POST['i3d_apikey'])) &&
-			updateSetting('i3d_gameserverid', encrypt($_POST['i3d_gameserverid']))) {
+			updateSetting('tool_minusone', $_POST['minusone'])) {
 			$status = '<div class="alert alert-success alert-block"><h4><i class="fa fa-check"></i> ' . $lang['word_ok'] . '</h4><p>' . $lang['msg_settings_saved'] . '</p></div>';
 			$log->insertActionLog($userInfo['user_id'], 'Settings edited');
-			
-			if(isset($i3dValid)) {
-				updateSetting('i3d_active', 'true');
-			} else {
-				updateSetting('i3d_active', 'false');
-			}
 			
 			// Reload settings
 			fetchSettings();
@@ -142,7 +110,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['lang']) && isset($_POST
 		$status = '<div class="alert alert-danger alert-block"><h4><i class="fa fa-times"></i> ' . $lang['word_error'] . '</h4><p>' . $lang['msg_error'] . '</p><ul><li>' . implode('</li><li>', $errors) . '</li></ul></div>';
 	}
 	
-}
+
 ?>
 			
 			<div class="row">
@@ -154,8 +122,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['lang']) && isset($_POST
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#controlpanel" data-toggle="tab"><i class="fa fa-home"></i> <?=$lang['word_cp_full']?></a></li>
 						<li><a href="#notifier" data-toggle="tab"><i class="fa fa-exclamation-circle"></i> <?=$lang['tool_set_notifier']?></a></li>
-						<li><a href="#tool" data-toggle="tab"><i class="fa fa-wrench"></i> BattlefieldTools Servertool</a></li>
-						<li><a href="#i3d" data-toggle="tab"><i class="fa fa-cog"></i> <?=$lang['i3d']?></a></li>
+						<li><a href="#tool" data-toggle="tab"><i class="fa fa-wrench"></i> WebCon for BFH</a></li>
 					</ul>
 					
 					<br /><br />
@@ -274,55 +241,6 @@ foreach(glob(CORE_DIR . '/lang/*.php') as $b) {
 										</select>
 									</div>
 								</div>
-								
-								<div class="form-group">
-									<label class="col-sm-3 control-label"><i class="fa fa-heart"></i> <?=$lang['tool_set_iga_ad']?></label>
-									<div class="col-sm-9">
-										<select name="iga_ad" class="selectpicker show-tick" data-width="100%" data-show-subtext="true" required>
-<?php
-foreach(array(0, 30, 60, 90, 120, 180, 240, 300) as $sec) {
-	$input = $lang['tool_set_iga_ad_opt'];
-	if($sec == 0) {
-		$input = $lang['word_disabled'];
-	}
-?>
-											<option value="<?=$sec?>"<?=(($settings['iga_ad'] == $sec) ? ' selected' : '') . (($sec > 0) ? ' data-subtext="' . $lang['word_ty'] . '" data-icon="fa fa-clock-o"' : 'data-icon="fa fa-times"')?>><?=replace($input, array('%s%' => $sec))?></option>
-<?php
-}
-?>
-										</select>
-										<span class="help-block">
-											<small><?=replace($lang['tool_set_iga_ad_help'], array('%msg%' => '<i>' . replace($settings['iga_ad_msg']) . '</i>'))?></small>
-										</span>
-									</div>
-								</div>
-							</div>
-							
-							<div class="tab-pane fade" id="i3d">
-								<div class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> <?=$lang['i3d_warn1']?></div>
-								
-								<div class="form-group">
-									<label class="col-sm-3 control-label"><i class="fa fa-user"></i> i3D userId</label>
-		 							<div class="col-sm-9">
-										<input type="text" name="i3d_userid" class="form-control" value="<?=((empty($settings['i3d_userid'])) ? '' : decrypt($settings['i3d_userid']))?>" />
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="col-sm-3 control-label"><i class="fa fa-key"></i> i3D API key</label>
-		 							<div class="col-sm-9">
-										<input type="password" name="i3d_apikey" class="form-control" value="<?=((empty($settings['i3d_apikey'])) ? '' : decrypt($settings['i3d_apikey']))?>" />
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="col-sm-3 control-label"><i class="fa fa-hdd-o"></i> i3D gameserverId</label>
-		 							<div class="col-sm-9">
-										<input type="text" name="i3d_gameserverid" class="form-control" value="<?=((empty($settings['i3d_gameserverid'])) ? '' : decrypt($settings['i3d_gameserverid']))?>" />
-									</div>
-								</div>
-							</div>
-						</div>
 						
 						<br />
 						

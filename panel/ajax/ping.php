@@ -55,7 +55,7 @@ if(is_float($ping)) {
 	$response['pingHtml'] = '<span class="text-danger">999+ ms</span>';
 }
 
-$ping2 = ping('http://battlefield.play4free.com/en/');
+$ping2 = ping('http://www.battlefieldheroes.com/');
 if(is_float($ping2)) {
 	$response['ping2'] = $ping2;
 	if($ping2 < 100) {

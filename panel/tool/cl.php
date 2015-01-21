@@ -35,7 +35,7 @@ include(CORE_DIR . '/cp_header.php');
 $status = '';
 
 // If form is posted
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_POST['ignvip']) && isset($_POST['kickmsg']) && isset($_POST['assaults']) && isset($_POST['medics']) && isset($_POST['recons']) && isset($_POST['engineers'])) {
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_POST['ignvip']) && isset($_POST['kickmsg']) && isset($_POST['gunner']) && isset($_POST['soldier']) && isset($_POST['commando'])) {
 	
 	sleep(2);
 	
@@ -56,27 +56,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_PO
 	if($_POST['ignvip'] != 'true' && $_POST['ignvip'] != 'false') {
 		$errors[] = $lang['tool_cl_err2'];
 	}
-	// Check assaults
-	if(!in_array($_POST['assaults'], range(0, 16))) {
-		$errors[] = replace($lang['tool_cl_err3'], array('%class%' => $lang['tool_cl_assaults']));
+	// Check gunners
+	if(!in_array($_POST['gunner'], range(0, 8))) {
+		$errors[] = replace($lang['tool_cl_err3'], array('%class%' => $lang['tool_cl_gunners']));
 	}
-	// Check medics
-	if(!in_array($_POST['medics'], range(0, 16))) {
-		$errors[] = replace($lang['tool_cl_err3'], array('%class%' => $lang['tool_cl_medics']));
+	// Check soldiers
+	if(!in_array($_POST['soldier'], range(0, 8))) {
+		$errors[] = replace($lang['tool_cl_err3'], array('%class%' => $lang['tool_cl_soldiers']));
 	}
-	// Check recons
-	if(!in_array($_POST['recons'], range(0, 16))) {
-		$errors[] = replace($lang['tool_cl_err3'], array('%class%' => $lang['tool_cl_recons']));
+	// Check commandos
+	if(!in_array($_POST['commando'], range(0, 8))) {
+		$errors[] = replace($lang['tool_cl_err3'], array('%class%' => $lang['tool_cl_commandos']));
 	}
-	// Check engineers
-	if(!in_array($_POST['engineers'], range(0, 16))) {
-		$errors[] = replace($lang['tool_cl_err3'], array('%class%' => $lang['tool_cl_engineers']));
 	}
 	
 	// Check errors and stuff
 	if(count($errors) == 0) {
 				
-		if(updateSetting('tool_cl', $_POST['status']) && updateSetting('tool_cl_ignorevip', $_POST['ignvip']) && updateSetting('tool_cl_msg', $_POST['kickmsg']) && updateSetting('tool_cl_Assaults', $_POST['assaults']) && updateSetting('tool_cl_Medics', $_POST['medics']) && updateSetting('tool_cl_Recons', $_POST['recons']) && updateSetting('tool_cl_Engineers', $_POST['engineers'])) {
+		if(updateSetting('tool_cl', $_POST['status']) && updateSetting('tool_cl_ignorevip', $_POST['ignvip']) && updateSetting('tool_cl_msg', $_POST['kickmsg']) && updateSetting('tool_cl_Gunners', $_POST['gunner']) && updateSetting('tool_cl_Soldiers', $_POST['soldier']) && updateSetting('tool_cl_Commandos', $_POST['commando'])) {
 			$status = '<div class="alert alert-success alert-block"><h4><i class="fa fa-check"></i> ' . $lang['word_ok'] . '</h4><p>' . $lang['msg_settings_saved'] . '</p></div>';
 			$log->insertActionLog($userInfo['user_id'], 'Class limiter settings edited');
 			
@@ -89,8 +86,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_PO
 	} else {
 		$status = '<div class="alert alert-danger alert-block"><h4><i class="fa fa-times"></i> ' . $lang['word_error'] . '</h4><p>' . $lang['msg_error'] . '</p><ul><li>' . implode('</li><li>', $errors) . '</li></ul></div>';
 	}
-	
-}
 ?>
 			
 			<div class="row">
@@ -143,13 +138,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_PO
 						<hr />
 						
 						<div class="form-group">
-							<label class="control-label col-sm-3"><i class="fa fa-user"></i> <?=$lang['tool_cl_assaults']?></label>
+							<label class="control-label col-sm-3"><i class="fa fa-user"></i> <?=$lang['tool_cl_gunners']?></label>
 							<div class="col-sm-9">
 								<select name="assaults" class="selectpicker show-tick" data-width="100%" required>
 <?php
-foreach(range(0, 16) as $amount) {
+foreach(range(0, 8) as $amount) {
 ?>
-									<option value="<?=$amount?>"<?=(($settings['tool_cl_Assaults'] == $amount) ? ' selected' : '')?>><?=$amount?></option>
+									<option value="<?=$amount?>"<?=(($settings['tool_cl_Gunners'] == $amount) ? ' selected' : '')?>><?=$amount?></option>
 <?php
 }
 ?>
@@ -158,13 +153,13 @@ foreach(range(0, 16) as $amount) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-3"><i class="fa fa-user"></i> <?=$lang['tool_cl_medics']?></label>
+							<label class="control-label col-sm-3"><i class="fa fa-user"></i> <?=$lang['tool_cl_soldiers']?></label>
 							<div class="col-sm-9">
 								<select name="medics" class="selectpicker show-tick" data-width="100%" required>
 <?php
-foreach(range(0, 16) as $amount) {
+foreach(range(0, 8) as $amount) {
 ?>
-									<option value="<?=$amount?>"<?=(($settings['tool_cl_Medics'] == $amount) ? ' selected' : '')?>><?=$amount?></option>
+									<option value="<?=$amount?>"<?=(($settings['tool_cl_Soldiers'] == $amount) ? ' selected' : '')?>><?=$amount?></option>
 <?php
 }
 ?>
@@ -173,13 +168,13 @@ foreach(range(0, 16) as $amount) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-3"><i class="fa fa-user"></i> <?=$lang['tool_cl_recons']?></label>
+							<label class="control-label col-sm-3"><i class="fa fa-user"></i> <?=$lang['tool_cl_commandos']?></label>
 							<div class="col-sm-9">
 								<select name="recons" class="selectpicker show-tick" data-width="100%" required>
 <?php
-foreach(range(0, 16) as $amount) {
+foreach(range(0, 8) as $amount) {
 ?>
-									<option value="<?=$amount?>"<?=(($settings['tool_cl_Recons'] == $amount) ? ' selected' : '')?>><?=$amount?></option>
+									<option value="<?=$amount?>"<?=(($settings['tool_cl_Commandos'] == $amount) ? ' selected' : '')?>><?=$amount?></option>
 <?php
 }
 ?>
@@ -187,22 +182,6 @@ foreach(range(0, 16) as $amount) {
 								<span class="help-block"><small><?=$lang['tool_gen_help1']?></small></span>
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-3"><i class="fa fa-user"></i> <?=$lang['tool_cl_engineers']?></label>
-							<div class="col-sm-9">
-								<select name="engineers" class="selectpicker show-tick" data-width="100%" required>
-<?php
-foreach(range(0, 16) as $amount) {
-?>
-									<option value="<?=$amount?>"<?=(($settings['tool_cl_Engineers'] == $amount) ? ' selected' : '')?>><?=$amount?></option>
-<?php
-}
-?>
-								</select>
-								<span class="help-block"><small><?=$lang['tool_gen_help1']?></small></span>
-							</div>
-						</div>
-						
 						<br />
 						
 						<button class="btn btn-primary pull-right" type="submit"><i class="fa fa-save"></i> <?=$lang['btn_save']?></button> 

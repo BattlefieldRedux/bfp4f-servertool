@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_PO
 		$errors[] = $lang['tool_sl_err2'];
 	}
 	// Check max
-	if(!in_array($_POST['max'], range(0, 16))) {
+	if(!in_array($_POST['max'], range(0, 20))) {
 		$errors[] = $lang['tool_sl_err3'];
 	}
 	
@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_PO
 				
 		if(updateSetting('tool_sl', $_POST['status']) && updateSetting('tool_sl_ignorevip', $_POST['ignvip']) && updateSetting('tool_sl_msg', $_POST['kickmsg']) && updateSetting('tool_sl_max', $_POST['max'])) {
 			$status = '<div class="alert alert-success alert-block"><h4><i class="fa fa-check"></i> ' . $lang['word_ok'] . '</h4><p>' . $lang['msg_settings_saved'] . '</p></div>';
-			$log->insertActionLog($userInfo['user_id'], 'Shotgun limiter settings edited');
+			$log->insertActionLog($userInfo['user_id'], 'Kills limiter settings edited');
 			
 			// Reload settings
 			fetchSettings();
@@ -135,7 +135,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_PO
 							<div class="col-sm-9">
 								<select name="max" class="selectpicker show-tick" data-width="100%" required>
 <?php
-foreach(range(0, 16) as $amount) {
+foreach(range(0, 20) as $amount) {
 ?>
 									<option value="<?=$amount?>"<?=(($settings['tool_sl_max'] == $amount) ? ' selected' : '')?>><?=$amount?></option>
 <?php

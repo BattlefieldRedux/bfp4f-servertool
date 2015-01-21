@@ -23,44 +23,90 @@ class GameMaps {
 	
 	public $maps = array(
 	
-		'gulf_of_oman' => 'Oman',
-		'dragon_valley' => 'Dragon Valley',
-		'dalian_plant' => 'Dalian Plant',
-		'mashtuur_city' => 'Mashtuur',
-		'strike_at_karkand' => 'Karkand',
-		'karkand_rush' => 'Karkand',
-		'sharqi' => 'Sharqi',
-		'Sharqi' => 'Sharqi',
-		'downtown' => 'Basra',
-		'trail' => 'Myanmar',
-	
+		'lake' => 'Buccaneer bay',
+		'seaside_skirmish' => 'Seaside Skirmish',
+		'village' => 'Victory Village',
+		'smack2' => 'Costal Clash',
+		'heat' => 'Riverside Rush',
+		'mayhem' => 'Sunset Showdown',
+		'ruin' => 'Midnight Mayhem',
+		'woodlands' => 'Alpine Assault',
+		'wicked_wake' => 'Wicked Wake',
+		'lunar' => 'Lunar Landing',
+		'river' => 'Fortress Frenzy',
+		'ruin_day' => 'Morning Mayhem',
+		'dependant_day' => 'Inland Invasion',
+		'dependant_day_night' => 'Inland Invasion Night',
+		'woodlands_snow' => 'Alpine Assault Snow',
+		'lake_snow' => 'Buccaneer Bay Snow',
+		'lake_night' => 'Buccaneer Bay Night',
+		'smack2_snow' => 'Costal Clash Snow',
+		'royal_rumble_snow' => 'Perilous Port Snow',
+		'royal_rumble_night' => 'Perilous Port Night',
+		'heat_snow' => 'Riverside Rush Snow',
+		'seaside_skirmish_night' => 'Seaside Skirmish Night',
+		'village_snow' => 'Victory Village Snow',
+		
 	);
 	
 	public $gamemodes = array(
 	
-		'gpm_sa' => 'Assault',
-		'gpm_rush' => 'Rush',
+		'gpm_tdm' => 'Team Deathmatch',
+		'gpm_hoth' => 'Hero Of The Hill',
+		'gpm_ctf' => 'Capture The Flag',
+		'gpm_cdm' => 'Team Elimination',
 	
 	);
 	
 	public $combos = array(
 	
-		'gpm_sa' => array(
-			'gulf_of_oman',
-			'dragon_valley',
-			'dalian_plant',
-			'mashtuur_city',
-			'strike_at_karkand',
-			'sharqi',
-			'downtown',
-			'trail',
+		'gpm_tdm' => array(
+			'lake',
+			'seaside_skirmish',
+			'village',
+			'smack2',
+			'heat',
+			'mayhem',
+			'ruin',
+			'woodlands',
+			'wicked_wake',
+			'lunar',
+			'river',
+			'ruin_day',
+			'dependant_day',
+			'dependant_day_night',
+			'woodlands_snow',
+			'lake_snow',
+			'lake_night',
+			'smack2_snow',
+			'royal_rumble_snow',
+			'royal_rumble_night',
+			'heat_snow',
+			'seaside_skirmish_night',
+			'village_snow',
 		),
 		
-		'gpm_rush' => array(
-			'Sharqi',
-			'karkand_rush',
-			'dalian_plant',
-			'downtown',
+		'gpm_hoth' => array(
+			'woodlands',
+			'smack2',
+			'ruin',
+			'ruin_snow',
+			'seaside_skirmish',
+			'mayhem',
+		),
+		
+		'gpm_ctf' => array(
+			'lake',
+			'lunar',
+			'royal_rumble_day',
+			'heat',
+			'village',
+		),
+		
+		'gpm_cdm' => array(
+			'ruin',
+			'seaside_skirmish',
+			'village',
 		),
 	
 	);
@@ -106,7 +152,7 @@ class GameMaps {
 	 * getMapNameKey()
 	 * Gets the mapkey by map name
 	 * 
-	 * @param $name str - Mapname e.g. Karkand
+	 * @param $name str - Mapname e.g. Buccaneer Bay
 	 * @return str - Key
 	 */
 	public function getMapNameKey($name) {
@@ -114,14 +160,14 @@ class GameMaps {
 			return $this->mapsAlt[$name];
 		}
 		
-		return 'strike_at_karkand';
+		return 'lake';
 	}
 	
 	/**
 	 * getGameModeKey()
 	 * Gets the gamemode key by gamemode name
 	 * 
-	 * @param $name str - Gamemode name e.g. Assault
+	 * @param $name str - Gamemode name e.g. Team Deathmatch
 	 * @return str - Key
 	 */
 	public function getGameModeKey($name) {
@@ -129,7 +175,7 @@ class GameMaps {
 			return $this->gamemodesAlt[$name];
 		}
 		
-		return 'gpm_sa';
+		return 'gpm_tdm';
 	}
 	
 }

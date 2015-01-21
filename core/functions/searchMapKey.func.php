@@ -27,7 +27,7 @@
  * @param $mode str - Gamemode
  * @return str
  */
-function searchMapKey($str, $mode='gpm_sa') {
+function searchMapKey($str, $mode='gpm_tdm') {
 	
 	$cmg = new GameMaps();
 	foreach($cmg->combos[$mode] as $key) {

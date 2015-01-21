@@ -151,15 +151,15 @@ if($settings['i3d_active'] == 'true' && $userInfo['rights_superadmin'] == 'yes' 
 							<h3><a href="<?=HOME_URL?>panel/vips.php"><?=$lang['tool_vipm']?></a></h3>
 							<p><?=$lang['tool_vipm_desc']?></p>
 						</div>
-						<div class="col-md-3 center db-item<?=(($userInfo['rights_itemlist'] == 'no') ? ' disabled' : '')?>">
-							<h1 class="dark"><i class="fa fa-list fa-2x"></i></h1>
-							<h3><a href="<?=HOME_URL?>panel/itemlist.php"><?=$lang['tool_iteml']?></a></h3>
-							<p><?=$lang['tool_iteml_desc']?></p>
-						</div>
 						<div class="col-md-3 center db-item<?=(($userInfo['rights_superadmin'] == 'no') ? ' disabled' : '')?>">
 							<h1 class="dark"><i class="fa fa-wrench fa-2x"></i></h1>
 							<h3><a href="<?=HOME_URL?>panel/settings.php"><?=$lang['tool_set']?></a></h3>
 							<p><?=$lang['tool_set_desc']?></p>
+						</div>
+						<div class="col-md-3 center db-item">
+							<h1 class="dark"><i class="fa fa-user fa-2x"></i></h1>
+							<h3><a href="<?=HOME_URL?>panel/my-account.php"><?=$lang['cp_myaccount']?></a></h3>
+							<p><?=$lang['cp_myaccount_subtitle']?></p>
 						</div>
 					</div>
 					<br />
@@ -175,14 +175,15 @@ if($settings['i3d_active'] == 'true' && $userInfo['rights_superadmin'] == 'yes' 
 							<p><?=$lang['tool_acc_desc']?></p>
 						</div>
 						<div class="col-md-3 center db-item">
-							<h1 class="dark"><i class="fa fa-user fa-2x"></i></h1>
-							<h3><a href="<?=HOME_URL?>panel/my-account.php"><?=$lang['cp_myaccount']?></a></h3>
-							<p><?=$lang['cp_myaccount_subtitle']?></p>
-						</div>
-						<div class="col-md-3 center db-item">
 							<h1><a href="javascript:;" onclick="$.executeCmd('toggleTool',{'vars':{'tool':'igcmds'}});$(this).find('i').toggleClass('red green')"><i class="<?=(($settings['tool_igcmds'] == 'true') ? 'fa fa-bullhorn green' : 'fa fa-bullhorn red')?> fa-2x"></i></a></h1>
 							<h3><a href="<?=HOME_URL?>panel/igcmds"><?=$lang['tool_igcmds']?></a></h3>
 							<p><?=$lang['tool_igcmds_desc']?></p>
+						</div>
+						<div class="col-md-3 center db-item<?=(($userInfo['rights_superadmin'] == 'no') ? ' disabled' : '')?>">
+							<h1><i class="fa fa-terminal blue fa-2x"></i></h1>
+							<h3><a href="<?=HOME_URL?>panel/tool/rcon.php"><?=$lang['tool_rcon']?></a></h3>
+							<p><?=$lang['tool_rcon_desc']?></p>
+							<p><i><?=$lang['tool_rcon_info1']?></i></p>
 						</div>
 					</div>
 					
@@ -190,29 +191,7 @@ if($settings['i3d_active'] == 'true' && $userInfo['rights_superadmin'] == 'yes' 
 										
 					<div class="alert alert-info"><i class="fa fa-lightbulb-o"></i> <?=$lang['cp_dashboard_explination']?></div>
 					
-					<div class="row">
-						<div class="col-md-3 center db-item<?=(($userInfo['rights_limiters'] == 'no') ? ' disabled' : '')?>">
-							<h1><a href="javascript:;" onclick="$.executeCmd('toggleTool',{'vars':{'tool':'wl'}});$(this).find('i').toggleClass('fa fa-times red fa fa-check green')"><i class="<?=(($settings['tool_wl'] == 'true') ? 'fa fa-check green' : 'fa fa-times red')?> fa-2x"></i></a></h1>
-							<h3><a href="<?=HOME_URL?>panel/tool/wl.php"><?=$lang['tool_wl']?></a></h3>
-							<p><?=$lang['tool_wl_desc']?></p>
-						</div>
-						<div class="col-md-3 center db-item<?=(($userInfo['rights_limiters'] == 'no') ? ' disabled' : '')?>">
-							<h1><a href="javascript:;" onclick="$.executeCmd('toggleTool',{'vars':{'tool':'pl'}});$(this).find('i').toggleClass('fa fa-times red fa fa-check green')"><i class="<?=(($settings['tool_pl'] == 'true') ? 'fa fa-check green' : 'fa fa-times red')?> fa-2x"></i></a></h1>
-							<h3><a href="<?=HOME_URL?>panel/tool/pl.php"><?=$lang['tool_pl']?></a></h3>
-							<p><?=$lang['tool_pl_desc']?></p>
-						</div>
-						<div class="col-md-3 center db-item<?=(($userInfo['rights_limiters'] == 'no') ? ' disabled' : '')?>">
-							<h1><a href="javascript:;" onclick="$.executeCmd('toggleTool',{'vars':{'tool':'dsl'}});$(this).find('i').toggleClass('fa fa-times red fa fa-check green')"><i class="<?=(($settings['tool_dsl'] == 'true') ? 'fa fa-check green' : 'fa fa-times red')?> fa-2x"></i></a></h1>
-							<h3><a href="<?=HOME_URL?>panel/tool/dsl.php"><?=$lang['tool_dsl']?></a></h3>
-							<p><?=$lang['tool_dsl_desc']?></p>
-						</div>
-						<div class="col-md-3 center db-item<?=(($userInfo['rights_limiters'] == 'no') ? ' disabled' : '')?>">
-							<h1><a href="javascript:;" onclick="$.executeCmd('toggleTool',{'vars':{'tool':'sl'}});$(this).find('i').toggleClass('fa fa-times red fa fa-check green')"><i class="<?=(($settings['tool_sl'] == 'true') ? 'fa fa-check green' : 'fa fa-times red')?> fa-2x"></i></a></h1>
-							<h3><a href="<?=HOME_URL?>panel/tool/sl.php"><?=$lang['tool_sl']?></a></h3>
-							<p><?=$lang['tool_sl_desc']?></p>
-						</div>
-					</div>
-					<br />
+
 					<div class="row">
 						<div class="col-md-3 center db-item<?=(($userInfo['rights_limiters'] == 'no') ? ' disabled' : '')?>">
 							<h1><a href="javascript:;" onclick="$.executeCmd('toggleTool',{'vars':{'tool':'ll'}});$(this).find('i').toggleClass('fa fa-times red fa fa-check green')"><i class="<?=(($settings['tool_ll'] == 'true') ? 'fa fa-check green' : 'fa fa-times red')?> fa-2x"></i></a></h1>
@@ -237,25 +216,18 @@ if($settings['i3d_active'] == 'true' && $userInfo['rights_superadmin'] == 'yes' 
 					</div>
 					<br />
 					<div class="row">
-						<div class="col-md-4 center db-item<?=(($userInfo['rights_blacklist'] == 'no') ? ' disabled' : '')?>">
-							<h1><i class="fa fa-ban red fa-2x"></i></h1>
-							<h3><a href="<?=HOME_URL?>panel/blacklist.php"><?=$lang['tool_bl']?></a></h3>
-							<p><?=$lang['tool_bl_desc']?></p>
-							<p><i><?=$lang['tool_bl_warn1']?></i></p>
+						<div class="col-md-3 center db-item<?=(($userInfo['rights_limiters'] == 'no') ? ' disabled' : '')?>">
+							<h1><a href="javascript:;" onclick="$.executeCmd('toggleTool',{'vars':{'tool':'sl'}});$(this).find('i').toggleClass('fa fa-times red fa fa-check green')"><i class="<?=(($settings['tool_sl'] == 'true') ? 'fa fa-check green' : 'fa fa-times red')?> fa-2x"></i></a></h1>
+							<h3><a href="<?=HOME_URL?>panel/tool/sl.php"><?=$lang['tool_sl']?></a></h3>
+							<p><?=$lang['tool_sl_desc']?></p>
 						</div>
-						<div class="col-md-4 center db-item<?=(($userInfo['rights_server'] == 'no') ? ' disabled' : '')?>">
+						<div class="col-md-3 center db-item<?=(($userInfo['rights_limiters'] == 'no') ? ' disabled' : '')?>">
 							<h1><i class="fa fa-comments fa-2x"></i></h1>
 							<h3><a href="<?=HOME_URL?>panel/tmsg"><?=$lang['tool_tmsg']?></a></h3>
 							<p><?=$lang['tool_tmsg_desc']?></p>
 						</div>
-						<div class="col-md-4 center db-item<?=(($userInfo['rights_rcon'] == 'no') ? ' disabled' : '')?>">
-							<h1><i class="fa fa-terminal blue fa-2x"></i></h1>
-							<h3><a href="<?=HOME_URL?>panel/tool/rcon.php"><?=$lang['tool_rcon']?></a></h3>
-							<p><?=$lang['tool_rcon_desc']?></p>
-							<p><i><?=$lang['tool_rcon_info1']?></i></p>
-						</div>
 					</div>
-					
+					<br />
 				</div>
 			</div>
 			

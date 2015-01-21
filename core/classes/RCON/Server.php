@@ -175,17 +175,11 @@ class Server
      * 
      * @return 
      */
-    public function changeMap($map, $gameType, $size = 32)
+    public function changeMap($map, $gameType, $size = 16)
     {
         return Base::query("map {$map} {$gameType} {$size}");
     }
-
-    public function changeMapAlt($map, $gameType, $size = 32)
-    {
-        return Base::query("exec admin.changemap {$map} {$gameType} {$size}");
-    }
-
-    public function appendMap($map, $gameType, $size = 32)
+    public function appendMap($map, $gameType, $size = 16)
     {
         return Base::query("exec maplist.append {$map} {$gameType} {$size}");
     }   
@@ -214,16 +208,6 @@ class Server
     {
         return Base::query("exec admin.runNextLevel");
     }
-    
-    /**
-     * Run next map.
-     * 
-     * @return
-     */
-    public function runNextMap()
-    {
-        return Base::query('newrcon runnextmap');
-    }
 
     /**
      * Sets number of rounds variable (applies to all maps)
@@ -248,18 +232,6 @@ class Server
     }
 
     /**
-     * Set next map using ID of map position in rotator.
-     * 
-     * @param int $map_id_in_rotation
-     *
-     * @return 
-     */
-    public function setNextMap($map_id_in_rotation = 0)
-    {
-        return Base::query('newrcon setnextmap' . ((int)$map_id_in_rotation));      
-    }
-
-    /**
      * End current round, and restart with the same map.
      *
      * @return 
@@ -267,16 +239,6 @@ class Server
     public function restartMap()
     {
         return Base::query('exec admin.restartMap');
-    }
-
-    /**
-     * Restart current map using b4fnm.
-     *
-     * @return 
-     */
-    public function restartMapAlt()
-    {
-        return Base::query('b4fnm restartmap');
     }
 
     /**
@@ -295,35 +257,10 @@ class Server
         // return explode("\r\n", $data);
     }
 
-    /**
-     * Sets time limit.
-     * 
-     * @param int $value
-     */
-    public function setTimeLimit($value)
-    {
-        Base::query("exec admin.timeLimit {$value}");
-    }
-
     public function getMaplist($name)
     {
         $data = Base::query('maplist');
         return $data;
-    }
-
-    public function pause()
-    {
-        return Base::query('exec gameLogic.pause');
-    }
-
-    public function unpause()
-    {
-        return Base::query('exec gameLogic.unpause');
-    }
-
-    public function togglePause()
-    {
-        return Base::query('exec gameLogic.togglePause');
     }
 
     /*** Leftovers to remove ***/
@@ -337,83 +274,9 @@ class Server
      */
     public function getPlaylist($name)
     {
-        $data = Base::query('exec admin.getPlaylist');
+        $data = Base::query('bf2cc pl');
         return $data;
     }
-
-    /**
-     * Leftover from BFBC2
-     * Set if the server should autobalance 
-     *
-     * @param boolean $enabled enable team balance.
-     *
-     * @return 
-     */
-    public function setTeamBalance($enabled = false)
-    {
-        $data = Base::query('exec admin.teamBalance ' . ((bool)$enabled));
-        // $data = Base::query('vars.teamBalance ' . ((bool)$enabled));
-        return $data;
-    }
-
-    /**
-     * Leftover from BFBC2
-     * Set if the server should allow team damage
-     * Probably works after round restart
-     *
-     * @param boolean $enabled enable friendly fire.
-     *
-     * @return
-     */
-    public function setFriendlyFire($enabled = false)
-    {
-        $data = Base::query('admin.friendlyFire ' . ((bool)$enabled));
-        // $data = Base::query('vars.friendlyFire ' . ((bool)$enabled));
-        return $data;
-    }
-
-    /**
-     * Leftover from BFBC2
-     * Retrieve the current maximum number of players
-     *
-     * @return This value is computed from all the different player limits in effect at any   given moment
-     */
-    public function setCurrentPlayerLimit()
-    {
-        $data = Base::query('admin.currentPlayerLimit');
-        // $data = Base::query('vars.currentPlayerLimit');
-        return $data;
-    }
-
-    /**
-     * Leftover from BFBC2
-     * Retrieve the server - enforced maximum number of players.
-     * Setting the user- defined maximum number of players higher than this has no effect
-     *
-     * @return 
-     */
-    public function setMaxPlayerLimit()
-    {
-        $data = Base::query('admin.maxPlayerLimit');
-        // $data = Base::query('vars.maxPlayerLimit');
-        return $data;
-    }
-
-    /**
-     * Leftover from BFBC2
-     * The effective maximum number of players is also effected by the server provider, and the game engine
-     *
-     * @param int $numOfPlayers Player limit must be in the range 8..32
-     *
-     * @return 
-     */
-    public function setPlayerLimit($numOfPlayers = 32)
-    {
-        $data = Base::query('admin.playerLimit ' . ((int) $numOfPlayers));
-        // $data = Base::query('vars.playerLimit ' . ((int) $numOfPlayers));
-        return $data;
-    }
-
     /**
      * Leftover from BFBC2
      *
@@ -423,38 +286,8 @@ class Server
      */
     public function setBannerUrl($bannerUrl = "")
     {
-        $data = Base::query('sv.bannerUrl ' . ((string) $bannerUrl));
+        $data = Base::query('exec sv.bannerUrl ' . ((string) $bannerUrl));
         // $data = Base::query('vars.bannerUrl ' . ((string) $bannerUrl));
-        return $data;
-    }
-
-    /**
-     * Leftover from BFBC2
-     * The description needs to be less than 400 characters long
-     *
-     * @param string $description Server Description
-     *
-     * @return 
-     */
-    public function setServerDescription($description = "")
-    {
-        $data = Base::query('sv.serverDescription ' . ((string) $description));
-        // $data = Base::query('vars.serverDescription ' . ((string) $description));
-        return $data;
-    }
-
-    /**
-     * Leftover from BFBC2
-     * Try admin (admin = role) instead of vars.
-     *
-     * @param boolean $enabled Enable or Disable Killcam
-     *
-     * @return 
-     */
-    public function setKillCam($enabled = true)
-    {
-        $data = Base::query('admin.killCam ' . ((boolean)$enabled));
-        // $data = Base::query('vars.killCam ' . ((boolean)$enabled));
         return $data;
     }
 }
