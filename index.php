@@ -22,7 +22,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Servertool by SharpBunny</title>
+		<title>WebCon by toolchain</title>
 		
 		<meta charset="utf8" />
 		
@@ -85,7 +85,7 @@ if(!function_exists('mcrypt_encrypt') || !function_exists('mcrypt_create_iv') ||
 			<footer class="row">
 				<div class="col-md-12">
 					<hr />		
-					<p class="text-muted"><a href="http://battlefieldtools.com" target="_blank"><i class="fa fa-wrench"></i> Official Thread</a> &middot; <a href="http://www.bfh-cbl.org" target="_blank"><i class="fa fa-file-text"></i> BFH-CBL.org</a> <span class="pull-right">Modified by toolchain</span> </p>
+					<p class="text-muted"><a href="http://battlefieldtools.com" target="_blank"><i class="fa fa-wrench"></i> Official Thread</a> &middot; <a href="http://www.bfh-cbl.org" target="_blank"><i class="fa fa-file-text"></i> BFH-CBL.org</a> <span class="pull-right">BattlefieldTools Servertool is licensed under GPL v3.0.<br />Copyright &copy; <?=date('Y')?> by Danny Li &lt;SharpBunny&gt;<br>Modified by toolchain</span> </p>
 				</div>
 			</footer>
 			
